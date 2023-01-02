@@ -1,0 +1,14 @@
+services:
+  flasktut:
+    restart: always
+    build: ./flasktut
+    # ports:
+    #   - "8000:8000"
+
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+      - "8080:8080"
+    depends_on:
+      - flasktut
