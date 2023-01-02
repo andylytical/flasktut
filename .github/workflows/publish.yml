@@ -55,7 +55,7 @@ jobs:
         id: build-and-push
         uses: docker/build-push-action@v3
         with:
-          context: ./${{ matrix.image.srcdir }}
+          context: "{{defaultContext}}:${{ matrix.image.srcdir }}"
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
