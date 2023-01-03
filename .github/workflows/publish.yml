@@ -49,6 +49,7 @@ jobs:
             ${{ env.REGISTRY }}/${{ env.DOCKERHUB_ACCT }}/${{ matrix.image.name }}
           tags: |
             "type=raw,value={{date 'X'}}-{{tag}}{{branch}}-{{sha}}"
+            "type=raw,value=latest"
 
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image

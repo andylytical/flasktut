@@ -13,4 +13,5 @@ COPY . ${APPDIR}/
 
 #CMD ["bash"]
 
+WORKDIR ${APPDIR}
 CMD [ "gunicorn", "app:app" ]

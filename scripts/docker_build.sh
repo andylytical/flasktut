@@ -21,6 +21,13 @@ delete_images_matching_name() {
 }
 
 
+delete_compose_containers() {
+  docker ps -a -f status=exited \
+  | awk '/flasktut/ {print $1}' \
+  | xargs -r docker rm
+}
+
+
 build() {
   delete_images_matching_name
   # BUILD IMAGE
@@ -58,6 +65,7 @@ case "$action" in
     run
     ;;
   delete|rm|clean)
+    delete_compose_containers
     delete_images_matching_name
     ;;
   *)

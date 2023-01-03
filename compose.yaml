@@ -1,0 +1,13 @@
+services:
+  flasktut:
+    image: docker.io/andylytical/flasktut-gunicorn
+    pull_policy: always
+    # restart: always
+
+  nginx:
+    image: docker.io/andylytical/flasktut-nginx
+    pull_policy: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - flasktut
