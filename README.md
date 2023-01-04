@@ -19,7 +19,7 @@ docker-compose stop
 
 ## Clean up
 ```
-images=($(docker-compose -q images))
+images=($(docker-compose images -q))
 docker-compose rm -sfv
 docker rmi "${images[@]}"
 rm compose.yaml
