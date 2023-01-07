@@ -1,12 +1,11 @@
 services:
-  flasktut:
+  gunicorn_project:
     build: ./flasktut
-    restart: always
 
   nginx:
-    build: ./nginx
+    image: docker.io/andylytical/nginx-as-gunicorn-proxy
+    pull_policy: always
     ports:
       - "8080:80"
     depends_on:
-      - flasktut
-    restart: always
+      - gunicorn_project
